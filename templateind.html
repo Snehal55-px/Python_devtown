@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Boston House Price Predictor</title>
+    <style>
+        body {
+            background: #f4f4f4;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            max-width: 600px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        input[type="submit"] {
+            background: #007BFF;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background: #0056b3;
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+        .result {
+            font-size: 20px;
+            color: green;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Boston House Price Prediction</h2>
+        <form action="/predict" method="post">
+            {% for i in range(13) %}
+                <input type="text" name="feature{{ i }}" placeholder="Enter feature {{ i + 1 }}" required>
+            {% endfor %}
+            <input type="submit" value="Predict Price">
+        </form>
+        <div class="result">
+            {{ prediction_text }}
+        </div>
+    </div>
+</body>
+</html>
